@@ -1,10 +1,10 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 
-import {PromotionsComponent} from './promotions.component';
+import {ChannelComponent} from './channel.component';
 
 const routes: Routes = [
-    {path: '', component: PromotionsComponent}
+    {path: '', component: ChannelComponent}
 ];
 
 @NgModule({
@@ -13,7 +13,7 @@ const routes: Routes = [
     exports: [RouterModule]
 })
 
-export class PromotionsRoutingModule {
+export class ChannelRoutingModule {
     constructor() {
     }
 }

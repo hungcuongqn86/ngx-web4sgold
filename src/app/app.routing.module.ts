@@ -3,15 +3,10 @@ import {Routes, RouterModule} from '@angular/router';
 import {AppGuard} from './app.guard.service';
 
 const appRoutes: Routes = [
+    {path: '', redirectTo: 'channel', pathMatch: 'full'},
     {
-        path: '',
+        path: 'channel',
         loadChildren: './modules/channel/channel.module#ChannelModule',
-        canActivate: [AppGuard]
-    },
-    {
-        path: '**',
-        loadChildren: './modules/channel/channel.module#ChannelModule',
-        pathMatch: 'full',
         canActivate: [AppGuard]
     }
 ];

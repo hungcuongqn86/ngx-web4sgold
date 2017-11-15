@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 
 @Component({
-    selector: 'app-promotions',
+    selector: 'app-channel',
     templateUrl: './channel.component.html',
     styleUrls: ['./channel.component.css']
 })
@@ -12,6 +12,6 @@ export class ChannelComponent implements OnInit {
     }
 
     ngOnInit() {
-
+        console.log(111);
     }
 }
