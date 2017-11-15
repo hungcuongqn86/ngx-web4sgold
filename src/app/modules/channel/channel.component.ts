@@ -12,6 +12,6 @@ export class ChannelComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log(111);
+
     }
 }
