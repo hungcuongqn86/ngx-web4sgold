@@ -1,41 +1,122 @@
-.mini-submenu {
-    display: none;
-    background-color: rgba(0, 0, 0, 0);
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 9px;
-    width: 42px;
-    margin-bottom: 15px;
+.sidebar {
+    width: 190px;
+    float: left;
+    position: static;
+    padding-left: 0;
+    padding-right: 0;
 }
 
-.mini-submenu:hover {
+.nav-list > li {
+    display: block;
+    position: relative;
+    float: none;
+    padding: 0;
+    border-style: solid;
+    border-width: 1px 0 0;
+}
+
+.nav-list > li > a > .menu-icon {
+    display: inline-block;
+    min-width: 22px;
+    margin-right: 0;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+    vertical-align: top;
+}
+
+.sidebar .nav-list a .badge {
+    font-size: 7px !important;
+    height: 15px;
+    width: 15px;
+    border-radius: 50% !important;
+    line-height: 16px;
+    text-align: center;
+    top: 10px !important;
+    padding: 0;
+    background-color: #e74c3c;
+}
+
+.nav-list > li .submenu {
+    display: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    line-height: 1.1;
+    position: relative;
+}
+
+.nav-list > li .submenu > li {
+    margin-left: 0;
+    position: relative;
     cursor: pointer;
 }
 
-.mini-submenu .icon-bar {
-    border-radius: 1px;
-    display: block;
-    height: 2px;
-    width: 22px;
-    margin-top: 3px;
+.sidebar-scroll .nav-list > li:first-child {
+    border-top-width: 0;
 }
 
-.mini-submenu .icon-bar {
-    background-color: #000;
+.nav-list > li .submenu > li > a {
+    display: block;
+    position: relative;
+    padding: 8px 0 8px 25px;
+    margin: 0;
+    border-top-width: 0;
+    border-top-style: dotted;
+    font-size: 12.5px;
 }
-.list-group {
-  border-left: 1px solid #ddd;
+
+.sidebar .nav-list a .badge {
+    font-size: 7px !important;
+    height: 15px;
+    width: 15px;
+    border-radius: 50% !important;
+    line-height: 16px;
+    text-align: center;
+    top: 10px !important;
+    padding: 0;
+    background-color: #e74c3c;
 }
-.list-group-item {
-  padding: 14px 15px;
-  border-left: 4px solid #fff;
-  transition: all 0.3s;
-  -webkit-transition: all 0.3s;
+
+.nav-list a.dropdown-toggle .badge, .nav-list a.dropdown-toggle .label {
+    right: 26px;
 }
-.list-group-item.active, .list-group-item.active:hover,.list-group-item:hover, .list-group-item.active:focus {
-  background-color: #fff;
-  color: #333;
-  font-weight: bold;
-  border-color: #ddd;
-  border-left: 4px solid #fa9918;
+
+.nav-list a .badge, .nav-list a .label {
+    position: absolute;
+    top: 9px;
+    right: 10px;
+    opacity: .88;
+    font-size: 12px;
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+.nav-list > li a > .arrow {
+    display: block;
+    width: 14px !important;
+    height: 14px;
+    line-height: 10px;
+    text-shadow: none;
+    font-size: 14px;
+    position: absolute;
+    right: 8px;
+    top: 12px;
+    padding: 0;
+    text-align: center;
+}
+
+.nav-list > li:last-child {
+    border-bottom-width: 1px;
+}
+
+.sidebar .sidebar-toggle:before {
+    display: block;
+    height: 0;
+    border-top: 1px solid;
+    border-color: inherit;
+    position: absolute;
+    left: 15px;
+    right: 15px;
+    top: 13px;
 }

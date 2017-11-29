@@ -1,12 +1,10 @@
 <div id="app" style="height:100%">
     <div id="wrapper" style="height:100%">
         <app-layouts-header></app-layouts-header>
-        <div class="container">
-            <div class="row">
-                <app-layouts-sidebar></app-layouts-sidebar>
-                <div>
-                    <router-outlet></router-outlet>
-                </div>
+        <div class="main-container">
+            <app-layouts-sidebar></app-layouts-sidebar>
+            <div class="main-content">
+                <router-outlet></router-outlet>
             </div>
         </div>
         <app-layouts-footer></app-layouts-footer>
