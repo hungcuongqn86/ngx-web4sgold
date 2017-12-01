@@ -1,6 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {HttpClientModule, HttpClient} from '@angular/common/http';
+import {HttpModule} from '@angular/http';
 
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './layouts/header.component';
@@ -13,8 +14,11 @@ import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 import {AppGuard} from './app.guard.service';
+import {HttpX} from './lib/http';
+import {Auth} from './lib/auth';
 
 import {environment} from '../environments/environment';
+
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, environment.basename + '/assets/i18n/', '.json?v=1.0.0');
 }
@@ -28,6 +32,7 @@ export function createTranslateLoader(http: HttpClient) {
     ],
     imports: [
         BrowserModule,
+        HttpModule,
         HttpClientModule,
         routing,
         SharedModule.forRoot(),
@@ -39,7 +44,7 @@ export function createTranslateLoader(http: HttpClient) {
             }
         })
     ],
-    providers: [AppGuard],
+    providers: [AppGuard, HttpX, Auth],
     bootstrap: [AppComponent]
 })
 export class AppModule {

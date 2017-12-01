@@ -1,7 +1,88 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-12">
-            Channel
+            <app-public-breadcrumb></app-public-breadcrumb>
+            <div class="panel panel-default page-header">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="form-group form-input-lg">
+                                <input name="code"
+                                       [maxLength]="50"
+                                       pattern="^[\w\d]+$" required
+                                       class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group form-input-lg">
+                                <input name="code"
+                                       [maxLength]="50"
+                                       pattern="^[\w\d]+$" required
+                                       class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group form-input-lg">
+                                <input name="code"
+                                       [maxLength]="50"
+                                       pattern="^[\w\d]+$" required
+                                       class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group form-input-lg">
+                                <input name="code"
+                                       [maxLength]="50"
+                                       pattern="^[\w\d]+$" required
+                                       class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row list-toolbar">
+                <div class="col-md-6">
+                    <button type="button" (click)="prodSync()" class="btn btn-primary btn-md"><i
+                            class="fa fa-refresh bigger-120" aria-hidden="true"></i> Đồng bộ
+                    </button>
+                </div>
+            </div>
+
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Tên</th>
+                    <th>SKU</th>
+                    <th>Giá gốc</th>
+                    <th>Giá bán lẻ</th>
+                    <th>Có sẵn</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>John</td>
+                    <td>Doe</td>
+                    <td>john@example.com</td>
+                    <td>john@example.com</td>
+                    <td>john@example.com</td>
+                </tr>
+                <tr>
+                    <td>Mary</td>
+                    <td>Moe</td>
+                    <td>mary@example.com</td>
+                    <td>mary@example.com</td>
+                    <td>mary@example.com</td>
+                </tr>
+                <tr>
+                    <td>July</td>
+                    <td>Dooley</td>
+                    <td>july@example.com</td>
+                    <td>july@example.com</td>
+                    <td>july@example.com</td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

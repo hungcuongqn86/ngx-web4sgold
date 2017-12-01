@@ -120,3 +120,7 @@
     right: 15px;
     top: 13px;
 }
+
+.nav-list li.active > a:after, .nav-list > li:before, .nav-list > li > .submenu:before, .nav-list > li > .submenu > li:before, .sidebar .sidebar-toggle:before, .sidebar.menu-min .nav-list > li > .submenu:after, .sidebar:before, li.divider:before {
+    content: "";
+}
