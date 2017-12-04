@@ -17,6 +17,8 @@ import {AppGuard} from './app.guard.service';
 import {HttpX} from './lib/http';
 import {Auth} from './lib/auth';
 
+import {AppService} from './service/app.service';
+
 import {environment} from '../environments/environment';
 
 export function createTranslateLoader(http: HttpClient) {
@@ -44,7 +46,7 @@ export function createTranslateLoader(http: HttpClient) {
             }
         })
     ],
-    providers: [AppGuard, HttpX, Auth],
+    providers: [AppGuard, HttpX, Auth, AppService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
