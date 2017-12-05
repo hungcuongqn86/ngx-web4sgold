@@ -6,6 +6,7 @@ import {HttpModule} from '@angular/http';
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './layouts/header.component';
 import {SidebarComponent} from './layouts/sidebar.component';
+import {SubmenuComponent} from './layouts/submenu.component';
 import {FooterComponent} from './layouts/footer.component';
 
 import {routing} from './app.routing.module';
@@ -30,7 +31,8 @@ export function createTranslateLoader(http: HttpClient) {
         AppComponent,
         HeaderComponent,
         FooterComponent,
-        SidebarComponent
+        SidebarComponent,
+        SubmenuComponent
     ],
     imports: [
         BrowserModule,

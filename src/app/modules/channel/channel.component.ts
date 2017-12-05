@@ -22,7 +22,7 @@ export class ChannelComponent implements OnInit {
         this.channelService.http.startLoad();
         this.subs = this.channelService.getLazProduct(this.channelService.search).subscribe(
             data => {
-                console.log(data);
+                // console.log(data);
                 this.channelService.http.endLoad();
             },
             error => {
