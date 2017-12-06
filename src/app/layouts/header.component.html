@@ -59,18 +59,26 @@
                                 class="ace-icon fa fa-arrow-right"></i> </a></li>
                     </ul>
                 </li>
-                <li class="grey"><a data-toggle="dropdown" href="#" class="dropdown-toggle" aria-expanded="false"> <img
-                        class="nav-user-photo"
-                        src="#"> <span
-                        class="user-info"> Root </span><i class="ace-icon fa fa-caret-down"></i> </a>
+                <li class="grey">
+                    <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                        <img class="nav-user-photo" src="#">
+                        <span *ngIf="profile&&profile.full_name!==''" class="user-info"> {{profile.full_name}} </span>
+                        <i class="ace-icon fa fa-caret-down"></i>
+                    </a>
                     <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
-                        <li><a href="http://store.webaz.com.vn/admin/user/edit-profile-user"> <i
-                                class="ace-icon fa fa-user"></i> Sửa thông tin tài khoản </a></li>
-                        <li><a href="http://store.webaz.com.vn/admin/user/edit-password-user"> <i
-                                class="ace-icon fa fa-cog"></i> Thay đổi mật khẩu </a></li>
+                        <li>
+                            <a href="http://store.webaz.com.vn/admin/user/edit-profile-user"><i
+                                    class="ace-icon fa fa-user"></i> Sửa thông tin tài khoản </a>
+                        </li>
+                        <li>
+                            <a href="http://store.webaz.com.vn/admin/user/edit-password-user"><i
+                                    class="ace-icon fa fa-cog"></i> Thay đổi mật khẩu </a>
+                        </li>
                         <li class="divider"></li>
-                        <li><a href="http://store.webaz.com.vn/admin/logout"> <i class="ace-icon fa fa-power-off"></i>
-                            Đăng xuất </a></li>
+                        <li>
+                            <a href="http://store.webaz.com.vn/admin/logout"> <i class="ace-icon fa fa-power-off"></i>
+                                Đăng xuất </a>
+                        </li>
                     </ul>
                 </li>
             </ul>

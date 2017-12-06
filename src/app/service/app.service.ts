@@ -18,4 +18,14 @@ export class AppService {
         const params: URLSearchParams = new URLSearchParams();
         return this.http.get(url, {search: params}).map((res: Response) => res.json());
     }
+
+    /**
+     *
+     * @returns {Observable<any>}
+     */
+    public getProfile() {
+        const url = apiUrl + 'auth/profile';
+        const params: URLSearchParams = new URLSearchParams();
+        return this.http.get(url, {search: params}).map((res: Response) => res.json());
+    }
 }
