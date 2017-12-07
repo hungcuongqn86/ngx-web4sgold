@@ -1,5 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, TemplateRef} from '@angular/core';
 import {ChannelService} from '../../service/channel.service';
+import {BsModalService} from 'ngx-bootstrap/modal';
+import {BsModalRef} from 'ngx-bootstrap/modal/bs-modal-ref.service';
+
+import {ProductsComponent} from './modal/products.component';
 
 @Component({
     selector: 'app-channel',
@@ -9,8 +13,9 @@ import {ChannelService} from '../../service/channel.service';
 
 export class ChannelComponent implements OnInit {
     private subs: any;
+    bsModalRef: BsModalRef;
 
-    constructor(public channelService: ChannelService) {
+    constructor(public channelService: ChannelService, private modalService: BsModalService) {
 
     }
 
@@ -31,7 +36,7 @@ export class ChannelComponent implements OnInit {
         );
     }
 
-    public prodSync() {
+    public prodDownload() {
         this.channelService.http.startLoad();
         this.subs = this.channelService.syncLazProduct().subscribe(
             data => {
@@ -42,5 +47,20 @@ export class ChannelComponent implements OnInit {
                 this.channelService.http.endLoad();
             }
         );
+    }
+
+    public prodUpload() {
+        const list = [
+            'Open a modal with component',
+            'Pass your data',
+            'Do something else',
+            '...'
+        ];
+        this.bsModalRef = this.modalService.show(ProductsComponent);
+        this.bsModalRef.content.title = 'Modal with component';
+        this.bsModalRef.content.list = list;
+        setTimeout(() => {
+            list.push('PROFIT!!!');
+        }, 2000);
     }
 }

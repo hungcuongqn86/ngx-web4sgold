@@ -13,6 +13,7 @@ import {routing} from './app.routing.module';
 import {SharedModule} from './public/shared.module';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {TooltipModule} from 'ngx-bootstrap/tooltip';
 
 import {AppGuard} from './app.guard.service';
 import {HttpX} from './lib/http';
@@ -46,7 +47,8 @@ export function createTranslateLoader(http: HttpClient) {
                 useFactory: createTranslateLoader,
                 deps: [HttpClient]
             }
-        })
+        }),
+        TooltipModule.forRoot()
     ],
     providers: [AppGuard, HttpX, Auth, AppService],
     bootstrap: [AppComponent]
