@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {AppService} from '../service/app.service';
+import {rootUrl} from '../app.config';
 
 @Component({
     selector: 'app-layouts-header',
@@ -10,7 +11,8 @@ import {AppService} from '../service/app.service';
 export class HeaderComponent {
 
     private subs: any;
-    public profile = {full_name: ''};
+    public profile = {full_name: '', url_img: ''};
+    public rootUrl = rootUrl;
 
     constructor(public appService: AppService) {
         this.getProfile();

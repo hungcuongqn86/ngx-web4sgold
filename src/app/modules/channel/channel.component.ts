@@ -14,6 +14,12 @@ import {ProductsComponent} from './modal/products.component';
 export class ChannelComponent implements OnInit {
     private subs: any;
     bsModalRef: BsModalRef;
+    config = {
+        animated: true,
+        keyboard: true,
+        backdrop: true,
+        ignoreBackdropClick: false
+    };
 
     constructor(public channelService: ChannelService, private modalService: BsModalService) {
 
@@ -56,11 +62,8 @@ export class ChannelComponent implements OnInit {
             'Do something else',
             '...'
         ];
-        this.bsModalRef = this.modalService.show(ProductsComponent);
+        this.bsModalRef = this.modalService.show(ProductsComponent, Object.assign({}, this.config, {class: 'gray modal-lg'}));
         this.bsModalRef.content.title = 'Modal with component';
         this.bsModalRef.content.list = list;
-        setTimeout(() => {
-            list.push('PROFIT!!!');
-        }, 2000);
     }
 }

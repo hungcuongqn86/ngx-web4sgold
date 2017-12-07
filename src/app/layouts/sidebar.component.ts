@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {AppService} from '../service/app.service';
+import {rootUrl} from '../app.config';
 
 @Component({
     selector: 'app-layouts-sidebar',
@@ -9,6 +10,7 @@ import {AppService} from '../service/app.service';
 
 export class SidebarComponent {
     private subs: any;
+    public rootUrl = rootUrl;
     public menuRoot = [];
     public allMenu = [];
     public select = {Module: {id: ''}};

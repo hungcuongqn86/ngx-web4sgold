@@ -1,3 +1,4 @@
+export const rootUrl = 'http://dev.web4sgold.com';  // URL to web api
 export const apiUrl = './api/';  // URL to web api
 
 export const serviceName = 'psp';
