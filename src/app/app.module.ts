@@ -13,6 +13,7 @@ import {routing} from './app.routing.module';
 import {SharedModule} from './public/shared.module';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {ModalModule} from 'ngx-bootstrap/modal';
 import {TooltipModule} from 'ngx-bootstrap/tooltip';
 
 import {AppGuard} from './app.guard.service';
@@ -20,6 +21,7 @@ import {HttpX} from './lib/http';
 import {Auth} from './lib/auth';
 
 import {AppService} from './service/app.service';
+import {LoadingComponent} from './public/loading/loading.component';
 
 import {environment} from '../environments/environment';
 
@@ -33,7 +35,8 @@ export function createTranslateLoader(http: HttpClient) {
         HeaderComponent,
         FooterComponent,
         SidebarComponent,
-        SubmenuComponent
+        SubmenuComponent,
+        LoadingComponent
     ],
     imports: [
         BrowserModule,
@@ -48,10 +51,14 @@ export function createTranslateLoader(http: HttpClient) {
                 deps: [HttpClient]
             }
         }),
+        ModalModule.forRoot(),
         TooltipModule.forRoot()
     ],
     providers: [AppGuard, HttpX, Auth, AppService],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    entryComponents: [
+        LoadingComponent
+    ]
 })
 export class AppModule {
 }

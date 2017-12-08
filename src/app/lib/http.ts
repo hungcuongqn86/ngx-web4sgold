@@ -4,13 +4,17 @@ import {Router} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import {clientId, clientKey, serviceName, serviceRegion} from '../app.config';
-import {moduleStart} from './const';
+import {moduleStart, modalConfig} from './const';
 import {DsLib} from './lib';
 import {Auth} from './auth';
+import {BsModalService} from 'ngx-bootstrap/modal';
+import {BsModalRef} from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import {LoadingComponent} from '../public/loading/loading.component';
 
 @Injectable()
 export class HttpX extends Http {
     public canActive = moduleStart;
+    public modalConfig = modalConfig;
     public profile: any;
     private dlLoad: any;
     private alertStatus = false;
@@ -20,8 +24,10 @@ export class HttpX extends Http {
         'X-Expires': '3600'
     };
     private timeStamp: Date;
+    public bsModalRef: BsModalRef;
 
     constructor(public router: Router, backend: XHRBackend, options: RequestOptions,
+                public modalService: BsModalService,
                 private auth: Auth) {
         super(backend, options);
     }
@@ -117,10 +123,7 @@ export class HttpX extends Http {
     }
 
     public endLoad() {
-        if (this.dlLoad) {
-            this.dlLoad.unsubscribe();
-            this.dlLoad = null;
-        }
+
     }
 
     public logout() {

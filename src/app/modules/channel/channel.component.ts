@@ -1,7 +1,8 @@
-import {Component, OnInit, TemplateRef} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ChannelService} from '../../service/channel.service';
 import {BsModalService} from 'ngx-bootstrap/modal';
 import {BsModalRef} from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import {ModalDirective} from 'ngx-bootstrap/modal';
 
 import {ProductsComponent} from './modal/products.component';
 
@@ -20,6 +21,8 @@ export class ChannelComponent implements OnInit {
         backdrop: true,
         ignoreBackdropClick: false
     };
+    @ViewChild('autoShownModal') autoShownModal: ModalDirective;
+    isModalShown = false;
 
     constructor(public channelService: ChannelService, private modalService: BsModalService) {
 
@@ -33,7 +36,7 @@ export class ChannelComponent implements OnInit {
         this.channelService.http.startLoad();
         this.subs = this.channelService.getLazProduct(this.channelService.search).subscribe(
             data => {
-                // console.log(data);
+                console.log(data);
                 this.channelService.http.endLoad();
             },
             error => {
@@ -65,5 +68,18 @@ export class ChannelComponent implements OnInit {
         this.bsModalRef = this.modalService.show(ProductsComponent, Object.assign({}, this.config, {class: 'gray modal-lg'}));
         this.bsModalRef.content.title = 'Modal with component';
         this.bsModalRef.content.list = list;
+    }
+
+
+    showModal(): void {
+        this.isModalShown = true;
+    }
+
+    hideModal(): void {
+        this.autoShownModal.hide();
+    }
+
+    onHidden(): void {
+        this.isModalShown = false;
     }
 }

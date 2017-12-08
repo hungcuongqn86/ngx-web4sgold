@@ -6,12 +6,14 @@ import {ChannelRoutingModule} from './channel.routing.module';
 import {ChannelComponent} from './channel.component';
 import {SharedModule} from '../../public/shared.module';
 import {ModalModule} from 'ngx-bootstrap/modal';
+import {TooltipModule} from 'ngx-bootstrap/tooltip';
 
 import {ChannelService} from '../../service/channel.service';
 import {ProductsComponent} from './modal/products.component';
 
 @NgModule({
-    imports: [CommonModule, FormsModule, HttpModule, ChannelRoutingModule, SharedModule, ModalModule.forRoot()],
+    imports: [CommonModule, FormsModule, HttpModule, ChannelRoutingModule, SharedModule, ModalModule.forRoot(),
+        TooltipModule.forRoot()],
     declarations: [
         ChannelComponent,
         ProductsComponent

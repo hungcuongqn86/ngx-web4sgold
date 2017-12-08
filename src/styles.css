@@ -215,3 +215,7 @@ a:hover {
     opacity: .88;
     font-size: 12px;
 }
+
+.tooltip-inner {
+    max-width: none;
+}
