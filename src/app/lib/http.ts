@@ -14,7 +14,7 @@ export class HttpX extends Http {
     public modalConfig = modalConfig;
     public profile: any;
     public loading = {show: false, fade: false, title: '', prog: 0};
-    public alertStatus = false;
+    public alertsys = [];
     private initParams = {
         'Content-Type': 'application/json',
         'X-Date': '',
@@ -93,24 +93,45 @@ export class HttpX extends Http {
             switch (err.status) {
                 case 400:
                     ms = err.json().message;
-                    serv.alert(ms);
+                    serv.alertsys.push({
+                        type: 'alert-warning',
+                        iconClass: 'fa-exclamation-triangle',
+                        title: 'Warning! ',
+                        messages: ms
+                    });
                     break;
                 case 401:
                     this.logout();
                     break;
+                case 404:
+                    ms = err.url;
+                    const title = err.status + ': ' + err.statusText;
+                    serv.alertsys.push({
+                        type: 'alert-warning',
+                        iconClass: 'fa-exclamation-triangle',
+                        title: title,
+                        messages: ms
+                    });
+                    break;
                 case 500:
                     ms = err.json().message;
-                    serv.alert(ms);
+                    serv.alertsys.push({
+                        type: 'alert-warning',
+                        iconClass: 'fa-exclamation-triangle',
+                        title: 'Warning! ',
+                        messages: ms
+                    });
                     break;
                 default:
-                    serv.alert(ms);
+                    serv.alertsys.push({
+                        type: 'alert-warning',
+                        iconClass: 'fa-exclamation-triangle',
+                        title: 'Warning! ',
+                        messages: err.statusText
+                    });
             }
             return Observable.throw(err);
         });
-    }
-
-    public alert(alert, type = 'error') {
-
     }
 
     public startLoad(title = 'Loading...') {
@@ -126,7 +147,7 @@ export class HttpX extends Http {
             myjs.loading.show = false;
             myjs.loading.title = '';
             myjs.loading.prog = 0;
-        }, 1000);
+        }, 300);
     }
 
     public logout() {

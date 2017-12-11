@@ -11,3 +11,7 @@
 .modal-dialog {
     margin: 10% auto;
 }
+
+.alert {
+    margin-bottom: 0;
+}
