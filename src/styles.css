@@ -219,3 +219,7 @@ a:hover {
 .tooltip-inner {
     max-width: none;
 }
+
+.pagination {
+    margin: 0;
+}

@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ChannelService} from '../../service/channel.service';
 import {BsModalService} from 'ngx-bootstrap/modal';
 import {BsModalRef} from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 import {ProductsComponent} from './modal/products.component';
+import {arrPageSize} from '../../lib/const';
 
 @Component({
     selector: 'app-channel',
@@ -12,20 +13,31 @@ import {ProductsComponent} from './modal/products.component';
 })
 
 export class ChannelComponent implements OnInit {
+    @ViewChild('form') form: any;
     private subs: any;
-    bsModalRef: BsModalRef;
-    config = {
+    public bsModalRef: BsModalRef;
+    public config = {
         animated: true,
         keyboard: true,
         backdrop: true,
         ignoreBackdropClick: false
     };
+    public maxSize = 5;
+    public bigTotalItems = 175;
+    public bigCurrentPage = 1;
+    public arrPageSize = arrPageSize;
 
     constructor(public channelService: ChannelService, private modalService: BsModalService) {
 
     }
 
     ngOnInit() {
+        this.getLazProduct();
+        console.log(this.arrPageSize);
+    }
+
+    public resetForm() {
+        this.form.reset();
         this.getLazProduct();
     }
 
@@ -65,5 +77,10 @@ export class ChannelComponent implements OnInit {
         this.bsModalRef = this.modalService.show(ProductsComponent, Object.assign({}, this.config, {class: 'gray modal-lg'}));
         this.bsModalRef.content.title = 'Modal with component';
         this.bsModalRef.content.list = list;
+    }
+
+    public pageChanged(event: any): void {
+        this.channelService.search.page = event.page;
+        this.getLazProduct();
     }
 }

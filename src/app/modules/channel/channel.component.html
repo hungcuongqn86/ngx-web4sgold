@@ -11,7 +11,7 @@
                                     <input title=""
                                            [(ngModel)]="channelService.search.title"
                                            placeholder="Tìm theo Tên, Mã, Mã vạch sản phẩm" name="code"
-                                           tooltip="Tìm theo Tên, Mã, Mã vạch sản phẩm" placement="bottom"
+                                           tooltip="Tìm theo Tên, Mã, Mã vạch sản phẩm" placement="top"
                                            class="form-control">
                                 </div>
                             </div>
@@ -19,7 +19,7 @@
                                 <div class="form-group form-input-lg">
                                     <a id="btn-search" class="btn btn-primary btn-md" (click)="getLazProduct()"><i
                                             class="ace-icon fa fa-search"></i></a>
-                                    <a id="btn-refresh-filter" class="btn btn-success btn-md"> <i
+                                    <a id="btn-refresh-filter" class="btn btn-success btn-md" (click)="resetForm()"> <i
                                             class="fa fa-refresh bigger-120" aria-hidden="true"></i></a>
                                 </div>
                             </div>
@@ -74,6 +74,18 @@
                 </tr>
                 </tbody>
             </table>
+            <div class="row">
+                <div class="col-md-6 col-xs-6">
+                    <select title="Page size" appBootstrapSelect class="selectpicker" [arroption]="arrPageSize"></select>
+                </div>
+                <div class="col-md-6 col-xs-6">
+                    <pagination [totalItems]="bigTotalItems" [(ngModel)]="bigCurrentPage" [maxSize]="maxSize"
+                                previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"
+                                (pageChanged)="pageChanged($event)"
+                                class="pagination-sm pull-right"
+                                [boundaryLinks]="true"></pagination>
+                </div>
+            </div>
         </div>
     </div>
 </div>
