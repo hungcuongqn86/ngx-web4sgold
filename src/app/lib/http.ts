@@ -7,27 +7,22 @@ import {clientId, clientKey, serviceName, serviceRegion} from '../app.config';
 import {moduleStart, modalConfig} from './const';
 import {DsLib} from './lib';
 import {Auth} from './auth';
-import {BsModalService} from 'ngx-bootstrap/modal';
-import {BsModalRef} from 'ngx-bootstrap/modal/bs-modal-ref.service';
-import {LoadingComponent} from '../public/loading/loading.component';
 
 @Injectable()
 export class HttpX extends Http {
     public canActive = moduleStart;
     public modalConfig = modalConfig;
     public profile: any;
-    private dlLoad: any;
-    private alertStatus = false;
+    public loading = {show: false, fade: false, title: '', prog: 0};
+    public alertStatus = false;
     private initParams = {
         'Content-Type': 'application/json',
         'X-Date': '',
         'X-Expires': '3600'
     };
     private timeStamp: Date;
-    public bsModalRef: BsModalRef;
 
     constructor(public router: Router, backend: XHRBackend, options: RequestOptions,
-                public modalService: BsModalService,
                 private auth: Auth) {
         super(backend, options);
     }
@@ -119,11 +114,19 @@ export class HttpX extends Http {
     }
 
     public startLoad(title = 'Loading...') {
-
+        this.loading.title = title;
+        this.loading.show = true;
+        this.loading.fade = true;
     }
 
     public endLoad() {
-
+        this.loading.fade = false;
+        const myjs = this;
+        setTimeout(function () {
+            myjs.loading.show = false;
+            myjs.loading.title = '';
+            myjs.loading.prog = 0;
+        }, 1000);
     }
 
     public logout() {
