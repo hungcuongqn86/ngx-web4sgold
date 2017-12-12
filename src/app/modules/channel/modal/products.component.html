@@ -5,10 +5,85 @@
     </button>
 </div>
 <div class="modal-body">
-    <ul *ngIf="list.length">
-        <li *ngFor="let item of list">{{item}}</li>
-    </ul>
+    <div class="row">
+        <div class="col-md-8">
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th>Sản phẩm</th>
+                    <th>Thuộc tính</th>
+                    <th style="width: 35px;"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <ng-container *ngFor="let product of products">
+                    <ng-container *ngFor="let row of product.ProductItem; let i = index">
+                        <tr *ngIf="i===0; else next">
+                            <td [attr.rowspan]="product.ProductItem.length">{{product.id}}-{{product.name}}</td>
+                            <td>
+                                <b>Mã:</b> {{row.code}}
+                                <br>
+                                <span [innerHTML]="row.meta"></span>
+                            </td>
+                            <td class="text-center"><i *ngIf="selproducts.indexOf(row) < 0; else idisable"
+                                                       class="fa fa-arrow-circle-right product-action"
+                                                       (click)="addProduct(row)"
+                                                       aria-hidden="true"></i>
+                                <ng-template #idisable>
+                                    <i class="fa fa-check-circle" style="color: #337ab7" aria-hidden="true"></i>
+                                </ng-template>
+                            </td>
+                        </tr>
+                        <ng-template #next>
+                            <tr>
+                                <td>
+                                    <b>Mã:</b> {{row.code}}
+                                    <br>
+                                    <span [innerHTML]="row.meta"></span>
+                                </td>
+                                <td class="text-center"><i *ngIf="selproducts.indexOf(row) < 0; else idisable"
+                                                           class="fa fa-arrow-circle-right product-action"
+                                                           (click)="addProduct(row)"
+                                                           aria-hidden="true"></i>
+                                    <ng-template #idisable>
+                                        <i class="fa fa-check-circle" style="color: #337ab7" aria-hidden="true"></i>
+                                    </ng-template>
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </ng-container>
+                </ng-container>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-4">
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th>Sản phẩm đã chọn</th>
+                    <th style="width: 35px;"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <ng-container *ngFor="let row of selproducts">
+                    <tr>
+                        <td>
+                            <b>Mã:</b> {{row.code}}
+                            <br>
+                            <span [innerHTML]="row.meta"></span>
+                        </td>
+                        <td class="text-center"><i class="fa fa-window-close product-action"
+                                                   (click)="removeProduct(row)"
+                                                   aria-hidden="true"></i>
+                        </td>
+                    </tr>
+                </ng-container>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">Close</button>
+    <button type="button" class="btn btn-primary" (click)="sync()">Đồng bộ</button>
+    <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">Quay lại</button>
 </div>

@@ -231,3 +231,7 @@ a:hover {
 .modal-90 {
     width: 90%;
 }
+
+.table > tbody > tr > td {
+    vertical-align: middle;
+}

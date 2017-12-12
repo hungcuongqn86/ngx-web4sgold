@@ -10,6 +10,7 @@ import {TooltipModule} from 'ngx-bootstrap/tooltip';
 import {PaginationModule} from 'ngx-bootstrap/pagination';
 
 import {ChannelService} from '../../service/channel.service';
+import {ProductsService} from '../../service/products.service';
 import {ProductsComponent} from './modal/products.component';
 
 @NgModule({
@@ -22,7 +23,7 @@ import {ProductsComponent} from './modal/products.component';
         ProductsComponent
     ],
     exports: [],
-    providers: [ChannelService],
+    providers: [ChannelService, ProductsService],
     entryComponents: [
         ProductsComponent
     ]

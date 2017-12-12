@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {ChannelService} from '../../service/channel.service';
 import {BsModalService} from 'ngx-bootstrap/modal';
 import {BsModalRef} from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import {Subscription} from 'rxjs/Subscription';
 
 import {ProductsComponent} from './modal/products.component';
 import {arrPageSize} from '../../lib/const';
@@ -14,7 +15,7 @@ import {arrPageSize} from '../../lib/const';
 
 export class ChannelComponent implements OnInit {
     @ViewChild('form') form: any;
-    private subs: any;
+    private subs: Subscription;
     public bsModalRef: BsModalRef;
     public config = {
         animated: true,
@@ -67,15 +68,13 @@ export class ChannelComponent implements OnInit {
     }
 
     public prodUpload() {
-        const list = [
-            'Open a modal with component',
-            'Pass your data',
-            'Do something else',
-            '...'
-        ];
         this.bsModalRef = this.modalService.show(ProductsComponent, Object.assign({}, this.config, {class: 'gray modal-90'}));
-        this.bsModalRef.content.title = 'Modal with component';
-        this.bsModalRef.content.list = list;
+        this.bsModalRef.content.title = 'Chọn sản phẩm đồng bộ';
+        this.subs = this.modalService.onHide.subscribe((reason: string) => {
+            if (this.bsModalRef.content.action === 'sync') {
+                this.getLazProduct();
+            }
+        });
     }
 
     public pageChanged(event: any): void {
