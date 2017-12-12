@@ -7,7 +7,7 @@ import {apiUrl} from '../app.config';
 export class ChannelService {
     static instance: ChannelService;
     private module = 'channel';
-    public search = {title: '', page_size: 10, page: 1};
+    public search = {title: '', page_size: 20, page: 1};
 
     constructor(public http: HttpX) {
         return ChannelService.instance = ChannelService.instance || this;

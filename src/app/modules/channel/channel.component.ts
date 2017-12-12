@@ -73,7 +73,7 @@ export class ChannelComponent implements OnInit {
             'Do something else',
             '...'
         ];
-        this.bsModalRef = this.modalService.show(ProductsComponent, Object.assign({}, this.config, {class: 'gray modal-lg'}));
+        this.bsModalRef = this.modalService.show(ProductsComponent, Object.assign({}, this.config, {class: 'gray modal-90'}));
         this.bsModalRef.content.title = 'Modal with component';
         this.bsModalRef.content.list = list;
     }

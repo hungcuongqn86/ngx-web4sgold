@@ -227,3 +227,7 @@ a:hover {
 .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
     width: max-content;
 }
+
+.modal-90 {
+    width: 90%;
+}
