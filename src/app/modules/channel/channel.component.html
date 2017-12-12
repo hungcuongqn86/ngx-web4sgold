@@ -31,11 +31,11 @@
             <div class="row list-toolbar">
                 <div class="col-md-6">
                     <button type="button" (click)="prodDownload()" class="btn btn-primary btn-md">
-                        <i class="fa fa-download" aria-hidden="true"></i> Lấy từ lazada
+                        <i class="fa fa-download" aria-hidden="true"></i> Lấy sản phẩm từ lazada
                     </button>
 
                     <button type="button" (click)="prodUpload()" class="btn btn-primary btn-md">
-                        <i class="fa fa-upload" aria-hidden="true"></i> Cập nhật sang lazada
+                        <i class="fa fa-upload" aria-hidden="true"></i> Đồng bộ sang lazada
                     </button>
                 </div>
             </div>
@@ -72,11 +72,63 @@
                     <td>july@example.com</td>
                     <td>july@example.com</td>
                 </tr>
+                <tr>
+                    <td>July</td>
+                    <td>Dooley</td>
+                    <td>july@example.com</td>
+                    <td>july@example.com</td>
+                    <td>july@example.com</td>
+                </tr>
+                <tr>
+                    <td>July</td>
+                    <td>Dooley</td>
+                    <td>july@example.com</td>
+                    <td>july@example.com</td>
+                    <td>july@example.com</td>
+                </tr>
+                <tr>
+                    <td>July</td>
+                    <td>Dooley</td>
+                    <td>july@example.com</td>
+                    <td>july@example.com</td>
+                    <td>july@example.com</td>
+                </tr>
+                <tr>
+                    <td>July</td>
+                    <td>Dooley</td>
+                    <td>july@example.com</td>
+                    <td>july@example.com</td>
+                    <td>july@example.com</td>
+                </tr>
+                <tr>
+                    <td>July</td>
+                    <td>Dooley</td>
+                    <td>july@example.com</td>
+                    <td>july@example.com</td>
+                    <td>july@example.com</td>
+                </tr>
+                <tr>
+                    <td>July</td>
+                    <td>Dooley</td>
+                    <td>july@example.com</td>
+                    <td>july@example.com</td>
+                    <td>july@example.com</td>
+                </tr>
+                <tr>
+                    <td>July</td>
+                    <td>Dooley</td>
+                    <td>july@example.com</td>
+                    <td>july@example.com</td>
+                    <td>july@example.com</td>
+                </tr>
                 </tbody>
             </table>
             <div class="row">
                 <div class="col-md-6 col-xs-6">
-                    <select title="Page size" appBootstrapSelect class="selectpicker" [arroption]="arrPageSize"></select>
+                    <select [(ngModel)]="channelService.search.page_size" name="page_size" title="Page size"
+                            (change)="pageSizeChange()"
+                            appBootstrapSelect
+                            class="selectpicker" [arroption]="arrPageSize"></select>
                 </div>
                 <div class="col-md-6 col-xs-6">
                     <pagination [totalItems]="bigTotalItems" [(ngModel)]="bigCurrentPage" [maxSize]="maxSize"

@@ -1,7 +1,7 @@
 import {ModuleWithProviders, NgModule} from '@angular/core';
 import {BreadcrumbComponent} from './breadcrumb/breadcrumb.component';
 
-import {BootstrapSelectDirective} from './bootstrap-select/bootstrap-select.directive';
+import {BootstrapSelectDirective} from '../directive/bootstrap-select/bootstrap-select.directive';
 
 @NgModule({
     imports: [],

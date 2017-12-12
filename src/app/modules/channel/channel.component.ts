@@ -33,7 +33,6 @@ export class ChannelComponent implements OnInit {
 
     ngOnInit() {
         this.getLazProduct();
-        console.log(this.arrPageSize);
     }
 
     public resetForm() {
@@ -81,6 +80,10 @@ export class ChannelComponent implements OnInit {
 
     public pageChanged(event: any): void {
         this.channelService.search.page = event.page;
+        this.getLazProduct();
+    }
+
+    public pageSizeChange() {
         this.getLazProduct();
     }
 }

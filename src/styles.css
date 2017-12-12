@@ -223,3 +223,7 @@ a:hover {
 .pagination {
     margin: 0;
 }
+
+.bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
+    width: max-content;
+}
