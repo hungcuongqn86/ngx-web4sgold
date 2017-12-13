@@ -62,8 +62,8 @@ export class ProductsComponent implements OnInit {
     public sync() {
         this.subs = this.productsService.syncProducts(this.selproductsid.join(',')).subscribe(
             data => {
-                /*this.action = 'sync';
-                this.bsModalRef.hide();*/
+                this.action = 'sync';
+                this.bsModalRef.hide();
             },
             error => {
 

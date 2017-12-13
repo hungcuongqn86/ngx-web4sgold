@@ -16,6 +16,7 @@ import {arrPageSize} from '../../lib/const';
 export class ChannelComponent implements OnInit {
     @ViewChild('form') form: any;
     private subs: Subscription;
+    public products: Array<any> = [];
     public bsModalRef: BsModalRef;
     public config = {
         animated: true,
@@ -24,7 +25,7 @@ export class ChannelComponent implements OnInit {
         ignoreBackdropClick: false
     };
     public maxSize = 5;
-    public bigTotalItems = 175;
+    public bigTotalItems = 0;
     public bigCurrentPage = 1;
     public arrPageSize = arrPageSize;
 
@@ -45,7 +46,8 @@ export class ChannelComponent implements OnInit {
         this.channelService.http.startLoad();
         this.subs = this.channelService.getLazProduct(this.channelService.search).subscribe(
             data => {
-                console.log(data);
+                this.products = data.data.result;
+                this.bigTotalItems = data.data.paging.count;
                 this.channelService.http.endLoad();
             },
             error => {
@@ -58,7 +60,6 @@ export class ChannelComponent implements OnInit {
         this.channelService.http.startLoad();
         this.subs = this.channelService.syncLazProduct().subscribe(
             data => {
-                console.log(data);
                 this.channelService.http.endLoad();
             },
             error => {

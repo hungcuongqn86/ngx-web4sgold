@@ -40,122 +40,39 @@
                 </div>
             </div>
 
-            <table class="table table-bordered">
+            <table class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                    <th>Tên</th>
-                    <th>SKU</th>
-                    <th>Giá gốc</th>
-                    <th>Giá bán lẻ</th>
-                    <th>Có sẵn</th>
+                    <th>Sản phẩm</th>
+                    <th>Thuộc tính</th>
+                    <th style="width: 35px;"></th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>John</td>
-                    <td>Doe</td>
-                    <td>john@example.com</td>
-                    <td>john@example.com</td>
-                    <td>john@example.com</td>
-                </tr>
-                <tr>
-                    <td>Mary</td>
-                    <td>Moe</td>
-                    <td>mary@example.com</td>
-                    <td>mary@example.com</td>
-                    <td>mary@example.com</td>
-                </tr>
-                <tr>
-                    <td>July</td>
-                    <td>Dooley</td>
-                    <td>july@example.com</td>
-                    <td>july@example.com</td>
-                    <td>july@example.com</td>
-                </tr>
-                <tr>
-                    <td>July</td>
-                    <td>Dooley</td>
-                    <td>july@example.com</td>
-                    <td>july@example.com</td>
-                    <td>july@example.com</td>
-                </tr>
-                <tr>
-                    <td>July</td>
-                    <td>Dooley</td>
-                    <td>july@example.com</td>
-                    <td>july@example.com</td>
-                    <td>july@example.com</td>
-                </tr>
-                <tr>
-                    <td>July</td>
-                    <td>Dooley</td>
-                    <td>july@example.com</td>
-                    <td>july@example.com</td>
-                    <td>july@example.com</td>
-                </tr>
-                <tr>
-                    <td>July</td>
-                    <td>Dooley</td>
-                    <td>july@example.com</td>
-                    <td>july@example.com</td>
-                    <td>july@example.com</td>
-                </tr>
-                <tr>
-                    <td>July</td>
-                    <td>Dooley</td>
-                    <td>july@example.com</td>
-                    <td>july@example.com</td>
-                    <td>july@example.com</td>
-                </tr>
-                <tr>
-                    <td>July</td>
-                    <td>Dooley</td>
-                    <td>july@example.com</td>
-                    <td>july@example.com</td>
-                    <td>july@example.com</td>
-                </tr>
-                <tr>
-                    <td>July</td>
-                    <td>Dooley</td>
-                    <td>july@example.com</td>
-                    <td>july@example.com</td>
-                    <td>july@example.com</td>
-                </tr>
-                <tr>
-                    <td>July</td>
-                    <td>Dooley</td>
-                    <td>july@example.com</td>
-                    <td>july@example.com</td>
-                    <td>july@example.com</td>
-                </tr>
-                <tr>
-                    <td>July</td>
-                    <td>Dooley</td>
-                    <td>july@example.com</td>
-                    <td>july@example.com</td>
-                    <td>july@example.com</td>
-                </tr>
-                <tr>
-                    <td>July</td>
-                    <td>Dooley</td>
-                    <td>july@example.com</td>
-                    <td>july@example.com</td>
-                    <td>july@example.com</td>
-                </tr>
-                <tr>
-                    <td>July</td>
-                    <td>Dooley</td>
-                    <td>july@example.com</td>
-                    <td>july@example.com</td>
-                    <td>july@example.com</td>
-                </tr>
-                <tr>
-                    <td>July</td>
-                    <td>Dooley</td>
-                    <td>july@example.com</td>
-                    <td>july@example.com</td>
-                    <td>july@example.com</td>
-                </tr>
+                <ng-container *ngFor="let product of products">
+                    <ng-container *ngFor="let row of product.ProductItem; let i = index">
+                        <tr *ngIf="i===0; else next">
+                            <td [attr.rowspan]="product.ProductItem.length">{{product.id}}-{{product.name}}</td>
+                            <td>
+                                <b>Mã:</b> {{row.code}}
+                                <br>
+                                <span [innerHTML]="row.meta"></span>
+                            </td>
+                            <td class="text-center"></td>
+                        </tr>
+                        <ng-template #next>
+                            <tr>
+                                <td>
+                                    <b>Mã:</b> {{row.code}}
+                                    <br>
+                                    <span [innerHTML]="row.meta"></span>
+                                </td>
+                                <td class="text-center">
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </ng-container>
+                </ng-container>
                 </tbody>
             </table>
             <div class="row">

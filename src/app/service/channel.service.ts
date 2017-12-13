@@ -14,7 +14,7 @@ export class ChannelService {
     }
 
     public getLazProduct(sparams) {
-        const url = apiUrl + this.module + '/laz-products';
+        const url = apiUrl + this.module + '/lazada/products-synced';
         const params: URLSearchParams = new URLSearchParams();
         Object.keys(sparams).map((key) => {
             params.set(key, sparams[key]);
@@ -23,7 +23,7 @@ export class ChannelService {
     }
 
     public syncLazProduct() {
-        const url = apiUrl + this.module + '/laz-products-sync';
+        const url = apiUrl + this.module + '/lazada/sync-products';
         const body = JSON.stringify({});
         return this.http.post(url, body).map((res: Response) => res.json());
     }
