@@ -21,4 +21,10 @@ export class ProductsService {
         });
         return this.http.get(url, {search: params}).map((res: Response) => res.json());
     }
+
+    public syncProducts(products) {
+        const url = apiUrl + 'channel/lazada/sync-product-to-lazada';
+        const body = JSON.stringify({products: products});
+        return this.http.post(url, body).map((res: Response) => res.json());
+    }
 }

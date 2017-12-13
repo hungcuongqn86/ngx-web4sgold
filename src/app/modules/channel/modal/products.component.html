@@ -6,6 +6,25 @@
 </div>
 <div class="modal-body">
     <div class="row">
+        <form novalidate (ngSubmit)="getProducts()" #form="ngForm">
+            <div class="col-sm-6">
+                <div class="form-group form-input-lg">
+                    <input title=""
+                           [(ngModel)]="productsService.search.title"
+                           placeholder="Tìm theo Tên, Mã, Mã vạch sản phẩm" name="code"
+                           tooltip="Tìm theo Tên, Mã, Mã vạch sản phẩm" placement="top"
+                           class="form-control">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group form-input-lg">
+                    <a id="btn-search" class="btn btn-primary btn-md" (click)="getProducts()"><i
+                            class="ace-icon fa fa-search"></i></a>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="row">
         <div class="col-md-8">
             <table class="table table-bordered table-hover">
                 <thead>
@@ -25,7 +44,7 @@
                                 <br>
                                 <span [innerHTML]="row.meta"></span>
                             </td>
-                            <td class="text-center"><i *ngIf="selproducts.indexOf(row) < 0; else idisable"
+                            <td class="text-center"><i *ngIf="selproductsid.indexOf(row.id) < 0; else idisable"
                                                        class="fa fa-arrow-circle-right product-action"
                                                        (click)="addProduct(row)"
                                                        aria-hidden="true"></i>
@@ -41,7 +60,7 @@
                                     <br>
                                     <span [innerHTML]="row.meta"></span>
                                 </td>
-                                <td class="text-center"><i *ngIf="selproducts.indexOf(row) < 0; else idisable"
+                                <td class="text-center"><i *ngIf="selproductsid.indexOf(row.id) < 0; else idisable"
                                                            class="fa fa-arrow-circle-right product-action"
                                                            (click)="addProduct(row)"
                                                            aria-hidden="true"></i>
@@ -55,6 +74,15 @@
                 </ng-container>
                 </tbody>
             </table>
+            <div class="row">
+                <div class="col-md-12 col-xs-12">
+                    <pagination [totalItems]="bigTotalItems" [(ngModel)]="bigCurrentPage" [maxSize]="maxSize"
+                                previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"
+                                (pageChanged)="pageChanged($event)"
+                                class="pagination-sm pull-right"
+                                [boundaryLinks]="true"></pagination>
+                </div>
+            </div>
         </div>
         <div class="col-md-4">
             <table class="table table-bordered table-hover">

@@ -230,6 +230,7 @@ a:hover {
 
 .modal-90 {
     width: 90%;
+    margin: auto;
 }
 
 .table > tbody > tr > td {

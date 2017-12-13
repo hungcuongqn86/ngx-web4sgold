@@ -14,6 +14,11 @@ export class ProductsComponent implements OnInit {
     private subs: Subscription;
     public products: Array<any> = [];
     public selproducts: Array<any> = [];
+    public selproductsid: Array<any> = [];
+
+    public maxSize = 5;
+    public bigTotalItems = 0;
+    public bigCurrentPage = 1;
 
     constructor(public bsModalRef: BsModalRef, public productsService: ProductsService) {
     }
@@ -27,7 +32,8 @@ export class ProductsComponent implements OnInit {
         this.productsService.search.page_size = 10;
         this.subs = this.productsService.getProducts(this.productsService.search).subscribe(
             data => {
-                this.products = data.data;
+                this.products = data.data.result;
+                this.bigTotalItems = data.data.paging.count;
                 this.productsService.http.endLoad();
             },
             error => {
@@ -38,15 +44,30 @@ export class ProductsComponent implements OnInit {
 
     public addProduct(product) {
         this.selproducts.push(product);
+        this.selproductsid.push(product.id);
     }
 
     public removeProduct(product) {
+        const index = this.selproducts.indexOf(product);
+        this.selproducts.splice(index, 1);
+        this.selproductsid.splice(index, 1);
+    }
 
-        console.log(this.selproducts, product);
+
+    public pageChanged(event: any): void {
+        this.productsService.search.page = event.page;
+        this.getProducts();
     }
 
     public sync() {
-        this.action = 'sync';
-        this.bsModalRef.hide();
+        this.subs = this.productsService.syncProducts(this.selproductsid.join(',')).subscribe(
+            data => {
+                /*this.action = 'sync';
+                this.bsModalRef.hide();*/
+            },
+            error => {
+
+            }
+        );
     }
 }
