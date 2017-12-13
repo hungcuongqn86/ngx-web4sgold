@@ -6,7 +6,7 @@
 </div>
 <div class="modal-body">
     <div class="row">
-        <form novalidate (ngSubmit)="getProducts()" #form="ngForm">
+        <form novalidate (ngSubmit)="search()" #form="ngForm">
             <div class="col-sm-6">
                 <div class="form-group form-input-lg">
                     <input title=""
@@ -18,7 +18,7 @@
             </div>
             <div class="col-sm-6">
                 <div class="form-group form-input-lg">
-                    <a id="btn-search" class="btn btn-primary btn-md" (click)="getProducts()"><i
+                    <a id="btn-search" class="btn btn-primary btn-md" (click)="search()"><i
                             class="ace-icon fa fa-search"></i></a>
                 </div>
             </div>
@@ -76,7 +76,9 @@
             </table>
             <div class="row">
                 <div class="col-md-12 col-xs-12">
-                    <pagination [totalItems]="bigTotalItems" [(ngModel)]="bigCurrentPage" [maxSize]="maxSize"
+                    <pagination [totalItems]="bigTotalItems" [(ngModel)]="productsService.search.page"
+                                [maxSize]="maxSize"
+                                [itemsPerPage]="productsService.search.page_size"
                                 previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"
                                 (pageChanged)="pageChanged($event)"
                                 class="pagination-sm pull-right"

@@ -18,12 +18,16 @@ export class ProductsComponent implements OnInit {
 
     public maxSize = 5;
     public bigTotalItems = 0;
-    public bigCurrentPage = 1;
 
     constructor(public bsModalRef: BsModalRef, public productsService: ProductsService) {
     }
 
     ngOnInit() {
+        this.getProducts();
+    }
+
+    public search() {
+        this.productsService.search.page = 1;
         this.getProducts();
     }
 

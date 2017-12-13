@@ -26,7 +26,6 @@ export class ChannelComponent implements OnInit {
     };
     public maxSize = 5;
     public bigTotalItems = 0;
-    public bigCurrentPage = 1;
     public arrPageSize = arrPageSize;
 
     constructor(public channelService: ChannelService, private modalService: BsModalService) {
@@ -37,9 +36,14 @@ export class ChannelComponent implements OnInit {
         this.getLazProduct();
     }
 
+    public search() {
+        this.channelService.search.page = 1;
+        this.getLazProduct();
+    }
+
     public resetForm() {
         this.form.reset();
-        this.getLazProduct();
+        this.search();
     }
 
     public getLazProduct() {
