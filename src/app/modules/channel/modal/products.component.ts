@@ -23,6 +23,7 @@ export class ProductsComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.productsService.search.title = '';
         this.getProducts();
     }
 

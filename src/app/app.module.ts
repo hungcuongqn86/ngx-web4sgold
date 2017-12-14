@@ -21,7 +21,6 @@ import {HttpX} from './lib/http';
 import {Auth} from './lib/auth';
 
 import {AppService} from './service/app.service';
-import {LoadingComponent} from './public/loading/loading.component';
 
 import {environment} from '../environments/environment';
 
@@ -35,8 +34,7 @@ export function createTranslateLoader(http: HttpClient) {
         HeaderComponent,
         FooterComponent,
         SidebarComponent,
-        SubmenuComponent,
-        LoadingComponent
+        SubmenuComponent
     ],
     imports: [
         BrowserModule,
@@ -56,9 +54,7 @@ export function createTranslateLoader(http: HttpClient) {
     ],
     providers: [AppGuard, HttpX, Auth, AppService],
     bootstrap: [AppComponent],
-    entryComponents: [
-        LoadingComponent
-    ]
+    entryComponents: []
 })
 export class AppModule {
 }
