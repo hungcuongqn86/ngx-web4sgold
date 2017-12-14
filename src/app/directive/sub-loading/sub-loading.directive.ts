@@ -18,18 +18,21 @@ export class SubLoadingDirective implements OnInit, OnChanges {
     ngOnInit() {
         const htmlstr = '<div class="data-loading"><span style="margin: auto;">' +
             '<i class="fa fa-refresh fa-spin"></i></span></div>';
-        // console.log(htmlstr);
         this.el.insertAdjacentHTML('afterbegin', htmlstr);
-        // this.el.appendChild(htmlstr);
+        this.control();
     }
 
     ngOnChanges(changes) {
         if (changes.open) {
-            if (this.open) {
-                console.log('open');
-            } else {
-                console.log('close');
-            }
+            this.control();
+        }
+    }
+
+    private control() {
+        if (this.open) {
+            console.log('open');
+        } else {
+            console.log('close');
         }
     }
 }
