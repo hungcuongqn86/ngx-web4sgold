@@ -233,6 +233,6 @@ a:hover {
     margin: auto;
 }
 
-.table > tbody > tr > td {
+.table > thead > tr > th, .table > tbody > tr > td {
     vertical-align: middle;
 }

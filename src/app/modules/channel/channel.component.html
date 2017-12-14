@@ -43,9 +43,14 @@
             <table class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                    <th>Sản phẩm</th>
-                    <th>Thuộc tính</th>
-                    <th style="width: 35px;"></th>
+                    <th class="text-center" rowspan="2">Sản phẩm</th>
+                    <th class="text-center" colspan="4">Thuộc tính</th>
+                </tr>
+                <tr>
+                    <th class="text-center">Thông tin chung</th>
+                    <th class="text-center">Mã vạch</th>
+                    <th class="text-center">Giá</th>
+                    <th class="text-center">Tồn kho</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -58,7 +63,9 @@
                                 <br>
                                 <span [innerHTML]="row.meta"></span>
                             </td>
-                            <td class="text-center"></td>
+                            <td class="text-center">{{row.barcode}}</td>
+                            <td class="text-center">{{row.price}}</td>
+                            <td class="text-center">{{row.inventory}}</td>
                         </tr>
                         <ng-template #next>
                             <tr>
@@ -67,8 +74,9 @@
                                     <br>
                                     <span [innerHTML]="row.meta"></span>
                                 </td>
-                                <td class="text-center">
-                                </td>
+                                <td class="text-center">{{row.barcode}}</td>
+                                <td class="text-center">{{row.price}}</td>
+                                <td class="text-center">{{row.inventory}}</td>
                             </tr>
                         </ng-template>
                     </ng-container>

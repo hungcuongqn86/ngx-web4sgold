@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --host dev.web4sgold.com --proxy-config proxy.conf.json",
-    "build": "ng build --prod --base-href \"/channel/\" --output-hashing none",
+    "build": "ng build --prod --base-href \"/admin/ngstore/\" --output-hashing none",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
