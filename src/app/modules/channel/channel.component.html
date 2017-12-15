@@ -28,7 +28,7 @@
                 </div>
             </div>
 
-            <div class="row list-toolbar">
+            <div class="row">
                 <div class="col-md-6">
                     <button type="button" (click)="prodDownload()" class="btn btn-primary btn-md">
                         <i class="fa fa-download" aria-hidden="true"></i> Lấy sản phẩm từ lazada
@@ -37,6 +37,18 @@
                     <button type="button" (click)="prodUpload()" class="btn btn-primary btn-md">
                         <i class="fa fa-upload" aria-hidden="true"></i> Đồng bộ sang lazada
                     </button>
+                </div>
+                <div class="col-md-6 col-xs-6 text-right">
+                    <div>{{((paging.page-1)*paging.limit)+ ' - ' + (paging.page*paging.limit) +' / '+paging.count}} Sản
+                        phẩm
+                    </div>
+                    <pagination [totalItems]="paging.count" [(ngModel)]="channelService.search.page"
+                                [maxSize]="maxSize"
+                                [itemsPerPage]="channelService.search.page_size"
+                                previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"
+                                (pageChanged)="pageChanged($event)"
+                                class="pagination-sm"
+                                [boundaryLinks]="true"></pagination>
                 </div>
             </div>
 
@@ -90,13 +102,13 @@
                             appBootstrapSelect
                             class="selectpicker" [arroption]="arrPageSize"></select>
                 </div>
-                <div class="col-md-6 col-xs-6">
-                    <pagination [totalItems]="bigTotalItems" [(ngModel)]="channelService.search.page"
+                <div class="col-md-6 col-xs-6 text-right">
+                    <pagination [totalItems]="paging.count" [(ngModel)]="channelService.search.page"
                                 [maxSize]="maxSize"
                                 [itemsPerPage]="channelService.search.page_size"
                                 previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"
                                 (pageChanged)="pageChanged($event)"
-                                class="pagination-sm pull-right"
+                                class="pagination-sm"
                                 [boundaryLinks]="true"></pagination>
                 </div>
             </div>

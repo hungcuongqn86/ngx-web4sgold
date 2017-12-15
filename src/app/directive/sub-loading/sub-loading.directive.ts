@@ -10,13 +10,15 @@ export class SubLoadingDirective implements OnInit, OnChanges {
     @Input('open')
     public open = false;
     private el;
+    private id = 'subLoading';
 
     constructor(private elref: ElementRef) {
         this.el = elref.nativeElement;
     }
 
     ngOnInit() {
-        const htmlstr = '<div class="data-loading"><span style="margin: auto;">' +
+        this.id = Math.random().toString(36).substring(6);
+        const htmlstr = '<div id="' + this.id + '" style="display: none;" class="data-loading"><span style="margin: 15% auto;">' +
             '<i class="fa fa-refresh fa-spin"></i></span></div>';
         this.el.insertAdjacentHTML('afterbegin', htmlstr);
         this.control();
@@ -30,9 +32,13 @@ export class SubLoadingDirective implements OnInit, OnChanges {
 
     private control() {
         if (this.open) {
-            console.log('open');
+            if (document.getElementById(this.id)) {
+                document.getElementById(this.id).style.display = 'block';
+            }
         } else {
-            console.log('close');
+            if (document.getElementById(this.id)) {
+                document.getElementById(this.id).style.display = 'none';
+            }
         }
     }
 }

@@ -25,7 +25,7 @@ export class ChannelComponent implements OnInit {
         ignoreBackdropClick: false
     };
     public maxSize = 5;
-    public bigTotalItems = 0;
+    public paging = {count: 0, page: 1, limit: 20};
     public arrPageSize = arrPageSize;
 
     constructor(public channelService: ChannelService, private modalService: BsModalService) {
@@ -51,7 +51,7 @@ export class ChannelComponent implements OnInit {
         this.subs = this.channelService.getLazProduct(this.channelService.search).subscribe(
             data => {
                 this.products = data.data.result;
-                this.bigTotalItems = data.data.paging.count;
+                this.paging = data.data.paging;
                 this.channelService.http.endLoad();
             },
             error => {

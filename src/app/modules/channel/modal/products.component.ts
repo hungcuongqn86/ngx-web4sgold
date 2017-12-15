@@ -15,6 +15,7 @@ export class ProductsComponent implements OnInit {
     public products: Array<any> = [];
     public selproducts: Array<any> = [];
     public selproductsid: Array<any> = [];
+    public loading = false;
 
     public maxSize = 5;
     public bigTotalItems = 0;
@@ -33,13 +34,13 @@ export class ProductsComponent implements OnInit {
     }
 
     public getProducts() {
-        this.productsService.http.startLoad();
+        this.loading = true;
         this.productsService.search.page_size = 10;
         this.subs = this.productsService.getProducts(this.productsService.search).subscribe(
             data => {
                 this.products = data.data.result;
                 this.bigTotalItems = data.data.paging.count;
-                this.productsService.http.endLoad();
+                this.loading = false;
             },
             error => {
                 this.productsService.http.endLoad();
@@ -65,9 +66,11 @@ export class ProductsComponent implements OnInit {
     }
 
     public sync() {
+        this.loading = true;
         this.subs = this.productsService.syncProducts(this.selproductsid.join(',')).subscribe(
             data => {
                 this.action = 'sync';
+                this.loading = false;
                 this.bsModalRef.hide();
             },
             error => {

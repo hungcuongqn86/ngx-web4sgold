@@ -170,10 +170,6 @@ a:hover {
     box-shadow: none;
 }
 
-.list-toolbar {
-    margin-bottom: 15px;
-}
-
 .badge {
     font-size: 7px !important;
     height: 15px;
@@ -253,8 +249,7 @@ a:hover {
     z-index: 999;
     margin: auto;
     display: inline-flex;
-    background-color: #000;
-    opacity: .5;
+    background-color: rgba(229,229,229, 0.85);
 }
 
 .data-loading span {
@@ -266,7 +261,7 @@ a:hover {
     min-width: 90px;
     min-height: 50px;
     text-align: center;
-    border: 1px solid rgba(0, 0, 0, .2);
     box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
     border-radius: 4px;
+    line-height: 50px;
 }
