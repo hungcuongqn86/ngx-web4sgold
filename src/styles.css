@@ -6,6 +6,10 @@ a:hover {
     text-decoration: none;
 }
 
+img {
+    max-width: 100%;
+}
+
 .no-skin .sidebar {
     background-color: #edf0f5;
     border-style: solid;

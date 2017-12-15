@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ChannelService} from '../../service/channel.service';
 import {Subscription} from 'rxjs/Subscription';
-import {Router} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 
 @Component({
     selector: 'app-channel',
@@ -11,15 +11,19 @@ import {Router} from '@angular/router';
 
 export class LazProductDetailComponent implements OnInit {
     private subs: Subscription;
-    public lazproduct = [];
+    public lazproduct: any;
     private id;
 
-    constructor(public channelService: ChannelService, private router: Router) {
-
+    constructor(public channelService: ChannelService, private route: ActivatedRoute, private router: Router) {
+        this.route.params.subscribe(params => {
+            this.id = params['id'];
+        });
     }
 
     ngOnInit() {
-        this.getSignLazProduct();
+        if (this.id) {
+            this.getSignLazProduct();
+        }
     }
 
     private getSignLazProduct() {
