@@ -3,6 +3,7 @@ import {ChannelService} from '../../service/channel.service';
 import {BsModalService} from 'ngx-bootstrap/modal';
 import {BsModalRef} from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import {Subscription} from 'rxjs/Subscription';
+import {Router} from '@angular/router';
 
 import {ProductsComponent} from './modal/products.component';
 import {arrPageSize} from '../../lib/const';
@@ -28,7 +29,7 @@ export class ChannelComponent implements OnInit {
     public paging = {count: 0, page: 1, limit: 20};
     public arrPageSize = arrPageSize;
 
-    constructor(public channelService: ChannelService, private modalService: BsModalService) {
+    constructor(public channelService: ChannelService, private modalService: BsModalService, private router: Router) {
 
     }
 
@@ -89,5 +90,10 @@ export class ChannelComponent implements OnInit {
 
     public pageSizeChange() {
         this.getLazProduct();
+    }
+
+    public goDetail = product => {
+        this.channelService.http.loading.show = true;
+        this.router.navigate([`/channel/laz-product/${product.id}`]);
     }
 }

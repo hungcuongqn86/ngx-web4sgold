@@ -12,6 +12,7 @@ import {PaginationModule} from 'ngx-bootstrap/pagination';
 import {ChannelService} from '../../service/channel.service';
 import {ProductsService} from '../../service/products.service';
 import {ProductsComponent} from './modal/products.component';
+import {LazProductDetailComponent} from './laz.product.detail.component';
 
 @NgModule({
     imports: [CommonModule, FormsModule, HttpModule, ChannelRoutingModule, SharedModule, ModalModule.forRoot(),
@@ -20,6 +21,7 @@ import {ProductsComponent} from './modal/products.component';
     ],
     declarations: [
         ChannelComponent,
+        LazProductDetailComponent,
         ProductsComponent
     ],
     exports: [],

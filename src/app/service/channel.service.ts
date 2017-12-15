@@ -22,6 +22,13 @@ export class ChannelService {
         return this.http.get(url, {search: params}).map((res: Response) => res.json());
     }
 
+    public getSignLazProduct(id) {
+        const url = apiUrl + this.module + '/lazada/laz-product';
+        const params: URLSearchParams = new URLSearchParams();
+        params.set('id', id);
+        return this.http.get(url, {search: params}).map((res: Response) => res.json());
+    }
+
     public syncLazProduct() {
         const url = apiUrl + this.module + '/lazada/sync-products';
         const body = JSON.stringify({});
