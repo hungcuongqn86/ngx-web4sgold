@@ -30,17 +30,18 @@
 
             <div class="row">
                 <div class="col-md-6">
-                    <button type="button" (click)="prodDownload()" class="btn btn-primary btn-md">
+                    <button type="button" (click)="prodDownload()" class="btn btn-primary btn-md" tooltip="Click để đồng bộ dữ liệu sản phẩm từ Lazada về hệ thống." placement="top">
                         <i class="fa fa-download" aria-hidden="true"></i> Lấy sản phẩm từ lazada
                     </button>
 
-                    <button type="button" (click)="prodUpload()" class="btn btn-primary btn-md">
+                    <button type="button" (click)="prodUpload()" class="btn btn-primary btn-md" tooltip="Click để đồng bộ dữ liệu sản phẩm từ hệ thống đến Lazada." placement="top">
                         <i class="fa fa-upload" aria-hidden="true"></i> Đồng bộ sang lazada
                     </button>
                 </div>
                 <div class="col-md-6 col-xs-6 text-right">
-                    <div>{{((paging.page-1)*paging.limit)+ ' - ' + (paging.page*paging.limit) +' / '+paging.count}} Sản
-                        phẩm
+                    <div><a class="text-info">{{((paging.page-1)*paging.limit)+ ' - ' + (paging.page*paging.limit) +' / '+paging.count}}
+                        Sản
+                        phẩm</a>
                     </div>
                     <pagination [totalItems]="paging.count" [(ngModel)]="channelService.search.page"
                                 [maxSize]="maxSize"
@@ -57,6 +58,7 @@
                 <tr>
                     <th class="text-center" rowspan="2">Sản phẩm</th>
                     <th class="text-center" colspan="4">Thuộc tính</th>
+                    <th class="text-center" style="max-width: 60px;" rowspan="2">#</th>
                 </tr>
                 <tr>
                     <th class="text-center">Thông tin chung</th>
@@ -78,6 +80,8 @@
                             <td class="text-center">{{row.barcode}}</td>
                             <td class="text-center">{{row.price}}</td>
                             <td class="text-center">{{row.inventory}}</td>
+                            <td [attr.rowspan]="product.ProductItem.length" class="text-center"><a tooltip="Click xem chi tiết" placement="top" class="data-info"><i
+                                    class="fa fa-info-circle" aria-hidden="true"></i></a></td>
                         </tr>
                         <ng-template #next>
                             <tr>
