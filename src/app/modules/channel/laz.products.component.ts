@@ -10,11 +10,11 @@ import {arrPageSize} from '../../lib/const';
 
 @Component({
     selector: 'app-channel',
-    templateUrl: './channel.component.html',
-    styleUrls: ['./channel.component.css']
+    templateUrl: './laz.products.component.html',
+    styleUrls: ['./laz.products.component.css']
 })
 
-export class ChannelComponent implements OnInit {
+export class LazProductsComponent implements OnInit {
     @ViewChild('form') form: any;
     private subs: Subscription;
     public products: Array<any> = [];
